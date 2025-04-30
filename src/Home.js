@@ -77,6 +77,51 @@ export default function Home() {
     }));
   }
 
+  function selectFullBook() {
+    const chapterKeys = Object.keys(selectedExam.chapters);
+    const desiredTotal = 25;
+    const questionsPerChapter = Math.floor(desiredTotal / chapterKeys.length);
+    let allSelectedQuestions = [];
+
+    // Pull up to X questions from each chapter
+    chapterKeys.forEach((chapterKey) => {
+      const chapter = selectedExam.chapters[chapterKey];
+      const chapterQuestions = Object.values(chapter.sections || {})
+        .flatMap(section => section.questions || []);
+      const selected = shuffleArray(chapterQuestions).slice(0, questionsPerChapter);
+      allSelectedQuestions.push(...selected);
+    });
+
+    // If we don't have enough, top off with extras from remaining pool
+    if (allSelectedQuestions.length < desiredTotal) {
+      const allQuestions = chapterKeys.flatMap((chapterKey) => {
+        const chapter = selectedExam.chapters[chapterKey];
+        return Object.values(chapter.sections || {})
+          .flatMap(section => section.questions || []);
+      });
+
+      const remainingQuestions = allQuestions.filter(
+        q => !allSelectedQuestions.includes(q)
+      );
+
+      const extras = shuffleArray(remainingQuestions).slice(0, desiredTotal - allSelectedQuestions.length);
+      allSelectedQuestions.push(...extras);
+    }
+
+    const shuffledQuestions = shuffleArray(allSelectedQuestions);
+
+    setQuizState(prev => ({
+      ...prev,
+      selectedSection: {
+        title: `${selectedExam.title} - Full Book Test`,
+        questions: shuffledQuestions
+      },
+      currentQuestionIndex: 0,
+      userAnswers: [],
+      view: "quiz"
+    }));
+  }
+
   function handleAnswer(selectedOptionIndex) {
     const currentQuestion = selectedSection.questions[currentQuestionIndex];
     const newAnswers = [...userAnswers, { question: currentQuestion, selectedOptionIndex }];
@@ -125,6 +170,14 @@ export default function Home() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-6 text-center">
         <h1 className="text-3xl font-bold mb-6">Select a Chapter</h1>
+        <div className="my-4">
+          <button
+            onClick={selectFullBook}
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Test Full Book (25 Random Questions)
+          </button>
+        </div>
         {Object.keys(selectedExam.chapters).map((chapterKey) => (
           <div key={chapterKey} className="my-2">
             <button
