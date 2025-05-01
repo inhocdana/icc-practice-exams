@@ -18,7 +18,7 @@ const section102 = {
       id: 5,
       question: "Who is responsible for maintaining required building systems and devices?",
       options: [
-        "The code official",
+        "The tradespeople for the building systems",
         "The property manager",
         "The owner or owner's designated agent",
         "The occupants"
@@ -55,7 +55,7 @@ const section102 = {
       question: "How must repairs and installations be performed under the IPMC?",
       options: [
         "Only by licensed contractors",
-        "In any reasonable manner",
+        "In any reasonable manner as long as instructions are followed",
         "In a workmanlike manner and according to manufacturer's instructions",
         "Only with written city approval"
       ],
@@ -81,7 +81,7 @@ const section102 = {
         "They are only recommendations",
         "They are optional unless adopted",
         "They have the same authority as the code itself",
-        "They apply only to new construction"
+        "They apply only to remodels"
       ],
       answer: 2,
       explanation: "Section 102.7 says that referenced codes and standards are considered part of the IPMC and carry the same authority as written provisions."
@@ -117,7 +117,7 @@ const section102 = {
         "Occupants",
         "Owner or owner's designated agent",
         "Code official",
-        "Original builder"
+        "Contractor responsible for the system"
       ],
       answer: 1,
       explanation: "Section 102.10 says the owner or owner's designated agent must maintain existing installations, systems, and devices in compliance with the IPMC."

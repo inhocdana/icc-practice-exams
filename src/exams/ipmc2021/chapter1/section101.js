@@ -6,7 +6,7 @@ const section101 = {
       id: 1,
       question: "What structures does the IPMC apply to?",
       options: [
-        "Only new construction",
+        "New and existing residential structures",
         "Only historic structures",
         "Existing residential and nonresidential structures",
         "Temporary structures only"
@@ -20,7 +20,7 @@ const section101 = {
       options: [
         "Enhance aesthetic design",
         "Promote public health, safety, and welfare",
-        "Encourage property redevelopment",
+        "Encourage property maintenance",
         "Create uniform property values"
       ],
       answer: 1,

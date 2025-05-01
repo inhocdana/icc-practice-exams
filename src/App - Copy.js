@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage";          // New marketing homepage
-import Home from "./Home";                  // Exam selector logic
+import Home from "./Home";
+import Homepage from "./Homepage"; // ✅ New import
 import MetadataHome from "./MetadataHome";
 import ExamPage from "./ExamPage";
 
@@ -8,8 +8,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} />           {/* New homepage */}
-        <Route path="/exams" element={<Home />} />          {/* Clean route for quiz selector */}
+        <Route path="/" element={<Home />} />
+        <Route path="/preview" element={<Homepage />} /> {/* ✅ New route */}
         <Route path="/metadata" element={<MetadataHome />} />
         <Route path="/exam/:examId" element={<ExamPage />} />
       </Routes>
@@ -18,3 +18,4 @@ function App() {
 }
 
 export default App;
+

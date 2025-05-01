@@ -9,10 +9,10 @@ export default function Homepage() {
           Prepare with Confidence for Your ICC Certification Exam
         </h1>
         <p className="text-lg text-gray-600 mb-6">
-          Practice realistic quizzes based on the International Property Maintenance Code (IPMC) and other ICC code books.
+          Practice realistic quizzes based on the International Property Maintenance Code (IPMC) and other ICC code books (coming soon).
         </p>
         <a
-          href="/exams"
+          href="/login"
           className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 inline-block text-lg"
         >
           Get Started Now
@@ -24,9 +24,9 @@ export default function Homepage() {
         <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
           <li>Choose a code book and chapter</li>
-          <li>Answer timed multiple-choice questions</li>
-          <li>Review detailed explanations for each answer</li>
-          <li>Track your progress and identify weak areas</li>
+          <li>Answer multiple-choice questions per chapter or over entire book</li>
+          <li>Explanations given for each wrong answer</li>
+          <li>Practice as many times as you want!</li>
         </ul>
       </section>
 

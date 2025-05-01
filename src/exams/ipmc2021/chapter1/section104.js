@@ -6,7 +6,7 @@ const section104 = {
       id: 18,
       question: "Who establishes the fees for activities and services under the IPMC?",
       options: [
-        "The code official personally",
+        "The code official",
         "The governing authority",
         "The fire marshal",
         "The building owner"
