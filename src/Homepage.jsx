@@ -23,10 +23,10 @@ export default function Homepage() {
       <section className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-2">
-          <li>Choose a code book and chapter</li>
-          <li>Answer multiple-choice questions across chapters or entire book</li>
-          <li>Get explanations for each wrong answer</li>
-          <li>Get prepared to take your ICC test!</li>
+          <li>Pick your ICC code book and drill down by chapter or section</li>
+	<li>Practice real-world multiple-choice questions — by section or full-book exams</li>
+	<li>Understand every mistake with clear, code-referenced explanations</li>
+	<li>Walk into your ICC exam confident and fully prepared</li>
         </ul>
       </section>
 
