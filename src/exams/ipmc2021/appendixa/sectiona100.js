@@ -6,7 +6,7 @@ const sectiona100 = {
       id: 317,
       question: "What color must boarding materials be painted?",
       options: ["White", "Tan or light brown", "Same color as existing structure", "Black"],
-      answer: 1,
+      answer: 2,
       explanation: "Section A101.1 requires boarding materials to be painted to correspond to the color of the existing structure."
     },
     {

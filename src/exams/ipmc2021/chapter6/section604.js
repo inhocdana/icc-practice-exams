@@ -23,7 +23,7 @@ const section604 = {
         "150 amperes",
         "200 amperes"
       ],
-      answer: 1,
+      answer: 0,
       explanation: "Section 604.2 requires that electrical service supply be not less than 60 amperes."
     },
     {
