@@ -28,24 +28,24 @@ const section105 = {
     },
     {
       id: 22,
-      question: "When can the code official enter a property for inspection?",
+      question: "What is the minimum requirement a code offical needs to be able to enter a property in order to enforce the provisions of the IPMC",
       options: [
-        "At any time without notice",
-        "Only during emergencies",
-        "With consent of the occupant or under legal authority",
-        "Only after business hours"
+        "A complaint has been made",
+        "After posting a violation notice",
+        "The code offical has reasonable cause",
+        "The tenant must be home"
       ],
       answer: 2,
-      explanation: "Section 105.3 says the code official may enter property with occupant consent or as authorized by law."
+      explanation: "Section 105.3 says where it is necessary to make an inspection to enforce the provisions of this code, ."
     },
     {
       id: 23,
       question: "What must the code official present when requested during official duties?",
       options: [
-        "A search warrant",
-        "An arrest warrant",
+        "A warrant",
+        "The notice of violation",
         "Proper identification",
-        "A copy of the property deed"
+        "Tax records for the building"
       ],
       answer: 2,
       explanation: "Section 105.4 says the code official must carry proper identification and present it when requested."
@@ -74,18 +74,18 @@ const section105 = {
       answer: 0,
       explanation: "Section 105.6 says the code official must maintain official records related to code enforcement activities."
     },
-    {
-      id: 26,
-      question: "Is the code official personally liable for actions taken in good faith enforcement of the code?",
-      options: [
-        "Yes, always personally liable",
-        "No, not liable if actions are performed in good faith",
-        "Only liable for financial damages",
-        "Only liable if sued"
-      ],
-      answer: 1,
-      explanation: "Section 105.7 says the code official is not personally liable for actions taken in good faith during enforcement."
-    },
+   {
+  id: 26,
+  question: "Which of the following situations would most likely result in personal liability for a code enforcement official?",
+  options: [
+    "An inspector signs off on a repair in good faith, but the repair later fails and causes property damage",
+    "A board of appeals member misapplies a provision during a variance review but acts without malice",
+    "A code officer knowingly ignores a safety violation to avoid upsetting a politically connected property owner",
+    "A city inspector conducts a proper inspection, but the property owner suffers financial loss due to required compliance"
+  ],
+  answer: 2,
+  explanation: "Section 105.7 tells us that personal liability is generally avoided when officials act in <strong>good faith</strong> and <strong>without malice</strong> while performing their duties. Option C describes an official intentionally ignoring a violation, which is not protected by this standard. The other options involve good-faith actions, which are protected from civil or criminal liability."
+},
     {
       id: 27,
       question: "Who defends a code official or employee if they are sued for actions taken under the IPMC?",

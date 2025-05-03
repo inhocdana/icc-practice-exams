@@ -1,19 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage";          // New marketing homepage
-import Home from "./Home";                  // Exam selector logic
+import { UserProvider } from "./UserContext"; // ✅ import context
+import Homepage from "./Homepage";
+import Home from "./Home";
 import MetadataHome from "./MetadataHome";
 import ExamPage from "./ExamPage";
+import AuthForm from "./AuthForm";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />           {/* New homepage */}
-        <Route path="/exams" element={<Home />} />          {/* Clean route for quiz selector */}
-        <Route path="/metadata" element={<MetadataHome />} />
-        <Route path="/exam/:examId" element={<ExamPage />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/exams" element={<Home />} />
+          <Route path="/metadata" element={<MetadataHome />} />
+          <Route path="/exam/:examId" element={<ExamPage />} />
+          <Route path="/auth" element={<AuthForm />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 

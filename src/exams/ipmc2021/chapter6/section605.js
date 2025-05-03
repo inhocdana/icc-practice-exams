@@ -40,15 +40,15 @@ const section605 = {
     },
     {
       id: 260,
-      question: "What is required regarding the maximum spacing between receptacle outlets in a habitable room?",
+      question: "When is GFCI protection required in a bathroom?",
       options: [
-        "Not more than 12 feet apart",
-        "At least 10 feet apart",
-        "Located only near windows and doors",
-        "Placed at ceiling height"
+        "Always",
+        "When dictated by the code offical",
+        "Never",
+        "When a new outlet is being installed"
       ],
-      answer: 0,
-      explanation: "Section 605.2 requires that no point along the wall line in habitable rooms be more than 6 feet from a receptacle outlet, effectively ensuring outlets are no more than 12 feet apart."
+      answer: 3,
+      explanation: "Section 605.2 says any new bathroom receptacle shall have GFCI protection."
     },
     {
       id: 261,
