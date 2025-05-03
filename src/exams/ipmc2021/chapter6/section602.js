@@ -47,20 +47,20 @@ const section602 = {
         "Heat must be supplied when outdoor temperatures require heating to maintain minimum indoor standards",
         "Heat is only necessary if snow is forecast"
       ],
-      answer: 2,
+      answer: 1,
       explanation: "Section 602.3 requires that heat be supplied as needed to maintain required indoor temperatures when outdoor temperatures make it necessary."
     },
     {
       id: 238,
-      question: "What are the exceptions to the heat supply requirements under Section 602.3?",
+      question: "A landlord in a region where the average monthly outdoor temperature is 45° (7°C) during the heating season claims that they are only required to maintain 65°F inside habitable rooms of their rental property. Which of the following best explains whether this claim aligns with the code requirements?",
       options: [
-        "If the outdoor temperature is warm enough that heating is unnecessary or if the average temperature is greater than 30°F for certain occupancies",
-        "If occupants request no heating",
-        "If mechanical ventilation is used instead of heating",
-        "If there are fewer than three occupants per room"
+        "The landlord is incorrect",
+        "The landlord is correct",
+        "The landlord is only correct if the heating system cannot maintain 68°F due to outdoor temperatures below design thresholds",
+        "The landlord is incorrect as it's a daily tempurature average that is important."
       ],
       answer: 1,
-      explanation: "Exceptions under Section 602.3 allow heat supply requirements to be waived when the outdoor temperature makes heating unnecessary or when the average outdoor temperature is greater than 30°F for non-owner-occupied spaces."
+      explanation: "According to IPMC Section 602.3, Exception #2, if the average monthly temperature is above 30°F (-1°C), a reduced indoor minimum of 65°F (18°C) is permitted instead of the standard 68°F."
     },
     {
       id: 239,
