@@ -1,33 +1,25 @@
 import { useState } from 'react';
 import { supabase } from './supabaseClient';
-import { useNavigate } from 'react-router-dom';
 
 export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const { data, error } = isLogin
+    const { error } = isLogin
       ? await supabase.auth.signInWithPassword({ email, password })
       : await supabase.auth.signUp({ email, password });
 
     setLoading(false);
-
     if (error) {
       alert(error.message);
-    } else if (isLogin && data?.user) {
-      alert('Login successful!');
-      setTimeout(() => {
-        navigate('/exams');
-      }, 1000); // ✅ 1-second delay before redirect
     } else {
-      alert('Signed up! Check your email to confirm.');
+      alert(isLogin ? 'Logged in!' : 'Signed up! Check your email to confirm.');
     }
   };
 

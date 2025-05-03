@@ -84,7 +84,7 @@ const section105 = {
     "A city inspector conducts a proper inspection, but the property owner suffers financial loss due to required compliance"
   ],
   answer: 2,
-  explanation: "Section 105.7 tells us that personal liability is generally avoided when officials act in <strong>good faith</strong> and <strong>without malice</strong> while performing their duties. Option C describes an official intentionally ignoring a violation, which is not protected by this standard. The other options involve good-faith actions, which are protected from civil or criminal liability."
+  explanation: "Section 105.7 tells us that personal liability is generally avoided when officials act in good faith and without malice while performing their duties. Option C describes an official intentionally ignoring a violation, which is not protected by this standard. The other options involve good-faith actions, which are protected from civil or criminal liability."
 },
     {
       id: 27,

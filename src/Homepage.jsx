@@ -4,7 +4,8 @@ import { supabase } from "./supabaseClient";
 
 
 export default function Homepage() {
-  const { user, loading } = useUser();
+  const { user, loading } = useUser()
+console.log("User in Homepage:", user);
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
