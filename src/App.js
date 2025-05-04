@@ -1,3 +1,4 @@
+import Disclaimer from "./Disclaimer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./UserContext"; // ✅ import context
 import Homepage from "./Homepage";
@@ -16,6 +17,7 @@ function App() {
           <Route path="/metadata" element={<MetadataHome />} />
           <Route path="/exam/:examId" element={<ExamPage />} />
           <Route path="/auth" element={<AuthForm />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
         </Routes>
       </Router>
     </UserProvider>

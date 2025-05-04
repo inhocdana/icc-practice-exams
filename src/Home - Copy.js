@@ -83,6 +83,7 @@ export default function Home() {
     const questionsPerChapter = Math.floor(desiredTotal / chapterKeys.length);
     let allSelectedQuestions = [];
 
+    // Pull up to X questions from each chapter
     chapterKeys.forEach((chapterKey) => {
       const chapter = selectedExam.chapters[chapterKey];
       const chapterQuestions = Object.values(chapter.sections || {})
@@ -91,6 +92,7 @@ export default function Home() {
       allSelectedQuestions.push(...selected);
     });
 
+    // If we don't have enough, top off with extras from remaining pool
     if (allSelectedQuestions.length < desiredTotal) {
       const allQuestions = chapterKeys.flatMap((chapterKey) => {
         const chapter = selectedExam.chapters[chapterKey];
@@ -239,13 +241,8 @@ export default function Home() {
   }
 
   if (view === "results" && selectedSection) {
-    const correctCount = userAnswers.filter(
-      ({ question, selectedOptionIndex }) => selectedOptionIndex === question.answer
-    ).length;
-
-    const wrongAnswers = userAnswers.filter(
-      ({ question, selectedOptionIndex }) => selectedOptionIndex !== question.answer
-    );
+    const correctCount = userAnswers.filter(({ question, selectedOptionIndex }) => selectedOptionIndex === question.answer).length;
+    const wrongAnswers = userAnswers.filter(({ question, selectedOptionIndex }) => selectedOptionIndex !== question.answer);
 
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-6 text-center">
@@ -274,20 +271,6 @@ export default function Home() {
           >
             Restart
           </button>
-        </div>
-
-        {/* Feedback Link */}
-        <div className="mt-10 text-sm text-gray-600">
-          <p>
-            Found an error in a question?{" "}
-            <a
-              href={`mailto:${["help", "@", "iccpracticeexams", ".com"].join("")}`}
-              className="text-blue-600 underline hover:text-blue-800"
-            >
-              Let us know
-            </a>
-            .
-          </p>
         </div>
       </div>
     );

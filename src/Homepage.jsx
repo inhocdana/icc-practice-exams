@@ -111,6 +111,13 @@ console.log("User in Homepage:", user);
           </p>
         </div>
       </section>
-    </main>
+ {/* Footer */}
+      <footer className="text-center text-sm text-gray-500 mt-16 border-t pt-6">
+        <p className="mb-2">© {new Date().getFullYear()} Dana Testing Services</p>
+        <a href="/disclaimer" className="text-blue-600 hover:underline">
+          Disclaimer
+        </a>
+      </footer>
+    </main>    
   );
 }
