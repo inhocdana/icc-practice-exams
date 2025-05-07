@@ -21,12 +21,15 @@ export default function Home() {
   const { view, selectedExam, selectedChapter, selectedSection, currentQuestionIndex, userAnswers } = quizState;
 
   function startExam(examId) {
-    setQuizState(prev => ({ ...prev, selectedExam: exams[examId], view: "selectChapter" }));
+    setQuizState(prev => ({
+      ...prev,
+      selectedExam: exams[examId],
+      view: "selectChapter"
+    }));
   }
 
   function selectChapter(chapterKey) {
     const chapter = quizState.selectedExam.chapters[chapterKey];
-
     if (Object.keys(chapter.sections).length === 0) {
       setQuizState(prev => ({
         ...prev,
@@ -83,7 +86,7 @@ export default function Home() {
     const questionsPerChapter = Math.floor(desiredTotal / chapterKeys.length);
     let allSelectedQuestions = [];
 
-    chapterKeys.forEach((chapterKey) => {
+    chapterKeys.forEach(chapterKey => {
       const chapter = selectedExam.chapters[chapterKey];
       const chapterQuestions = Object.values(chapter.sections || {})
         .flatMap(section => section.questions || []);
@@ -92,7 +95,7 @@ export default function Home() {
     });
 
     if (allSelectedQuestions.length < desiredTotal) {
-      const allQuestions = chapterKeys.flatMap((chapterKey) => {
+      const allQuestions = chapterKeys.flatMap(chapterKey => {
         const chapter = selectedExam.chapters[chapterKey];
         return Object.values(chapter.sections || {})
           .flatMap(section => section.questions || []);
@@ -102,7 +105,10 @@ export default function Home() {
         q => !allSelectedQuestions.includes(q)
       );
 
-      const extras = shuffleArray(remainingQuestions).slice(0, desiredTotal - allSelectedQuestions.length);
+      const extras = shuffleArray(remainingQuestions).slice(
+        0,
+        desiredTotal - allSelectedQuestions.length
+      );
       allSelectedQuestions.push(...extras);
     }
 
@@ -276,12 +282,11 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Feedback Link */}
         <div className="mt-10 text-sm text-gray-600">
           <p>
             Found an error in a question?{" "}
             <a
-              href={`mailto:${["help", "@", "iccpracticeexams", ".com"].join("")}`}
+              href="mailto:help@iccpracticeexams.com"
               className="text-blue-600 underline hover:text-blue-800"
             >
               Let us know
