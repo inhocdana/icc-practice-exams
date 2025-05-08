@@ -221,16 +221,25 @@ export default function Home() {
             Test Full Book (25 Random Questions)
           </button>
         </div>
-        {Object.keys(selectedExam.chapters).map((chapterKey) => (
-          <div key={chapterKey} className="my-2">
-            <button
-              onClick={() => selectChapter(chapterKey)}
-              className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              {selectedExam.chapters[chapterKey].title}
-            </button>
-          </div>
-        ))}
+        {Object.keys(exams).map((examId) => (
+  <div key={examId} className="my-4 flex items-center space-x-4">
+    <button
+      onClick={() => startExam(examId)}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
+    >
+      {exams[examId].title}
+    </button>
+
+    {examId === "ipmc2021" && (
+      <div>
+        <div
+          id="paypal-hosted-button-id"
+          data-hosted-button-id="2HDC5ZZCEH5BE" // Replace with your actual hosted button ID
+        ></div>
+      </div>
+    )}
+  </div>
+))}
       </div>
     );
   }
