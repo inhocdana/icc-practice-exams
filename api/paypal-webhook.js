@@ -1,29 +1,41 @@
+// /api/paypal-webhook.js
+import { supabase } from '../../src/supabaseClient';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).send('Method Not Allowed');
   }
 
   try {
-    const body = req.body;
+    const event = req.body;
 
-    // Log the event (you can later add validation using PayPal's verification API)
-    console.log('Received PayPal webhook:', body);
+    // Optional: Validate PayPal signature headers here (can add later)
 
-    // Example: Check if it's a completed payment
-    if (
-      body.event_type === 'CHECKOUT.ORDER.APPROVED' ||
-      body.event_type === 'PAYMENT.CAPTURE.COMPLETED'
-    ) {
-      const userEmail = body.resource.payer.email_address;
-      const examId = body.resource.custom_id || null; // Optional, if you pass it during PayPal setup
+    const eventType = event.event_type;
 
-      // TODO: Add Supabase logic here to grant access
-      console.log(`Grant access to ${userEmail} for ${examId}`);
+    if (eventType === 'PAYMENT.CAPTURE.COMPLETED') {
+      const payerEmail = event.resource?.payer?.email_address;
+
+      // Grant access in Supabase
+      if (payerEmail) {
+        const { data, error } = await supabase
+          .from('exam_access')
+          .insert([{ email: payerEmail, exam_id: 'ipmc2021' }]);
+
+        if (error) {
+          console.error('Supabase insert error:', error.message);
+          return res.status(500).json({ error: 'Supabase insert failed' });
+        }
+
+        return res.status(200).json({ message: 'Access granted' });
+      }
     }
 
-    res.status(200).json({ received: true });
-  } catch (error) {
-    console.error('Error handling PayPal webhook:', error);
-    res.status(500).send('Webhook handler failed');
+    // Respond for all other event types
+    res.status(200).json({ message: 'Event received' });
+
+  } catch (err) {
+    console.error('Webhook error:', err.message);
+    res.status(400).send('Webhook Error');
   }
 }
