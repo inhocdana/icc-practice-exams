@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import LoadingSpinner from "./LoadingSpinner"; // Create this if you don't have one
+import Toast from "./Toast"; // Import the Toast component
 
 const ProtectedRoute = ({ children, examId }) => {
   const [loading, setLoading] = useState(true);
   const [hasAccess, setHasAccess] = useState(false);
   const [user, setUser] = useState(null);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     // Check auth status
@@ -28,7 +30,13 @@ const ProtectedRoute = ({ children, examId }) => {
           .eq("user_id", user.id)
           .single();
 
-        setHasAccess(!error && data && data.ipmc2021_paid);
+        const hasValidAccess = !error && data && data.ipmc2021_paid;
+        setHasAccess(hasValidAccess);
+
+        // Show toast if user doesn't have access
+        if (!hasValidAccess) {
+          setShowToast(true);
+        }
       }
       setLoading(false);
     };
@@ -51,7 +59,7 @@ const ProtectedRoute = ({ children, examId }) => {
   }
 
   if (!hasAccess) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace state={{ showAccessDeniedToast: true }} />;
   }
 
   return children;

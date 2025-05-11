@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useUser } from "./UserContext"; // ✅ Make sure this path matches your project
 import { supabase } from "./supabaseClient";
+import Toast from "./components/Toast";
 
 export default function Homepage() {
   const { user, loading } = useUser();
+  const location = useLocation();
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.showAccessDeniedToast) {
+      setShowToast(true);
+      // Clean up the state to prevent showing toast on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   console.log("User in Homepage:", user);
 
   const handleLogout = async () => {
@@ -13,6 +26,14 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <Toast
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+        message="Please purchase access to take this exam"
+        type="warning"
+        duration={5000}
+      />
+
       {/* Navigation Bar */}
       <nav className="bg-white shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
