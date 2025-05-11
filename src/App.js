@@ -6,6 +6,7 @@ import Home from "./Home";
 import MetadataHome from "./MetadataHome";
 import ExamPage from "./pages/ExamPage";
 import AuthForm from "./AuthForm";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -18,7 +19,14 @@ function App() {
           <Route path="/exam/:examId" element={<ExamPage />} />
           <Route path="/auth" element={<AuthForm />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
-          <Route path="/exams/:examId" element={<ExamPage />} />
+          <Route
+            path="/exams/:examId"
+            element={
+              <ProtectedRoute>
+                <ExamPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </UserProvider>
