@@ -4,7 +4,7 @@ import { UserProvider } from "./UserContext"; // ✅ import context
 import Homepage from "./Homepage";
 import Home from "./Home";
 import MetadataHome from "./MetadataHome";
-import ExamPage from "./ExamPage";
+import ExamPage from "./pages/ExamPage";
 import AuthForm from "./AuthForm";
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path="/exam/:examId" element={<ExamPage />} />
           <Route path="/auth" element={<AuthForm />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/exams/:examId" element={<ExamPage />} />
         </Routes>
       </Router>
     </UserProvider>

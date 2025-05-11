@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SmartPayPalButton from "./components/SmartPayPalButton";
 import { useState, useMemo } from "react";
 import { useUser } from "./UserContext";
@@ -180,12 +181,12 @@ export default function Home() {
   const examButtons = useMemo(() => {
     return Object.keys(exams).map((examId) => (
       <div key={examId} className="my-4 flex flex-col items-center">
-        <button
-          onClick={() => startExam(examId)}
+        <Link
+          to={`/exams/${examId}`}
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
         >
           {exams[examId].title}
-        </button>
+        </Link>
         {examId === "ipmc2021" && user && (
           <div className="mt-2 w-[250px]" key={`paypal-${user.id}`}>
             <SmartPayPalButton />
@@ -200,7 +201,22 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center min-h-screen p-6 text-center">
         <h1 className="text-4xl font-bold mb-6">ICC Practice Exams</h1>
         <p className="mb-6 text-lg max-w-xl">Select an exam to begin.</p>
-        {examButtons}
+        {Object.keys(exams).map((examId) => (
+          <div key={examId} className="my-4 flex flex-col items-center">
+            <Link
+              to={`/exams/${examId}`}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              {exams[examId].title}
+            </Link>
+
+            {examId === "ipmc2021" && (
+              <div className="mt-2 w-[250px]">
+                <SmartPayPalButton />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     );
   }
