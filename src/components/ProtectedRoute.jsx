@@ -11,7 +11,6 @@ const ProtectedRoute = ({ children, examId }) => {
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    // Check auth status
     const getUser = async () => {
       const {
         data: { user },
@@ -33,10 +32,12 @@ const ProtectedRoute = ({ children, examId }) => {
         const hasValidAccess = !error && data && data.ipmc2021_paid;
         setHasAccess(hasValidAccess);
 
-        // Show toast if user doesn't have access
         if (!hasValidAccess) {
           setShowToast(true);
         }
+      } else {
+        // Set hasAccess to true for any other examId
+        setHasAccess(true);
       }
       setLoading(false);
     };

@@ -178,23 +178,23 @@ export default function Home() {
   }
 
   // Memoize the exams buttons to prevent unnecessary re-renders
-  const examButtons = useMemo(() => {
-    return Object.keys(exams).map((examId) => (
-      <div key={examId} className="my-4 flex flex-col items-center">
-        <Link
-          to={`/exams/${examId}`}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
-        >
-          {exams[examId].title}
-        </Link>
-        {examId === "ipmc2021" && user && (
-          <div className="mt-2 w-[250px]" key={`paypal-${user.id}`}>
-            <SmartPayPalButton />
-          </div>
-        )}
-      </div>
-    ));
-  }, [user?.id]); // Only re-render when user ID changes
+  // const examButtons = useMemo(() => {
+  //   return Object.keys(exams).map((examId) => (
+  //     <div key={examId} className="my-4 flex flex-col items-center">
+  //       <Link
+  //         to={`/exams/${examId}`}
+  //         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded shadow transition duration-300 ease-in-out transform hover:scale-105"
+  //       >
+  //         {exams[examId].title}
+  //       </Link>
+  //       {examId === "ipmc2021" && user && (
+  //         <div className="mt-2 w-[250px]" key={`paypal-${user.id}`}>
+  //           <SmartPayPalButton />
+  //         </div>
+  //       )}
+  //     </div>
+  //   ));
+  // }, [user?.id]); // Only re-render when user ID changes
 
   if (view === "home") {
     return (
